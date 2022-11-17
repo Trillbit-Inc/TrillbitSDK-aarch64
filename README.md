@@ -45,7 +45,7 @@ Cross-compiling:
     
 Trillbit SDK will be functional only after the device on which the SDK will run on is licensed on the Trillbit backend. For this a one time API call with the UID of the device, on which the SDK will be integrated into, will be requiered.
 
-Please refer to the README.md in the scripts/license folder for exact steps of licensing. 
+Please refer to the [README.md](scripts/license/README.md) in the scripts/license folder for exact steps of licensing. 
 
 The output of the licensing procedure trillbit.lic must be placed in the same directory of the built examples. For custom integrated applications, only the license data can be used directly before compilation.
 
