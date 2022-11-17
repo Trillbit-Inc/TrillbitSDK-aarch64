@@ -41,6 +41,14 @@ Cross-compiling:
 
     cmake .. -DPLATFORM_OPTION=<x86_64/aarch64> -DCMAKE_INSTALL_PREFIX="../install" -DCMAKE_TOOLCHAIN_FILE="../toolchains/aarch64_gcc_linux.cmake"
 
+## Prebuilt files
+
+Platform specific prebuilt binaries can also found in the *platforms/\<arch\>/prebuilt/bin* folder, where arch can be x86_64/aarch64. 
+
+The library for integration can also be found in the *platforms/\<arch\>/prebuilt/lib/GCC* folder as a static library that can be compiled with the application in which it will be integrated in.
+
+For mode details refer to [README.md](platforms/README.md).
+
 ## Licensing
     
 Trillbit SDK will be functional only after the device on which the SDK will run on is licensed on the Trillbit backend. For this a one time API call with the UID of the device, on which the SDK will be integrated into, will be requiered.
