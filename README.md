@@ -45,15 +45,17 @@ Cross-compiling:
 
 The library for integration can be found in the *platforms/\<arch\>/prebuilt/lib/GCC* folder as a static library that can be compiled with the application in which it will be integrated in.
 
+For mode details refer to the [Binary README.md](platforms/x86_64/prebuilt/bin/README.md).
+
 Platform specific prebuilt binaries can be found in the *platforms/\<arch\>/prebuilt/bin* folder, where arch can be x86_64/aarch64. 
 
-For mode details refer to [README.md](platforms/README.md).
+For mode details refer to the [Platforms README.md](platforms/README.md).
 
 ## Licensing
     
 Trillbit SDK will be functional only after the device on which the SDK will run on is licensed on the Trillbit server. For this, a one time API call with the UID of the device, on which the SDK will be integrated into, will be required.
 
-Please refer to the [README.md](scripts/license/README.md) in the scripts/license folder for the exact steps of licensing. 
+Please refer to the [Licensing README.md](scripts/license/README.md) in the scripts/license folder for the exact steps of licensing. 
 
 The output of the licensing procedure, *trillbit.lic*, must be placed in the same directory of the compiled binaries.
 
