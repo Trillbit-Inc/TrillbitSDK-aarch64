@@ -31,7 +31,7 @@ The cmake command expects a -DPLATFORM_OPTION=<x86_64/aarch64> tag , if nothing 
 
 To cross compile for aarch64 from a x86_64, an additional -DCMAKE_TOOLCHAIN_FILE="../toolchains/aarch64_gcc_linux.cmake" must be provided. 
 
-To have a local install path -DCMAKE_INSTALL_PREFIX="../install" can be given
+To have a local install path -DCMAKE_INSTALL_PREFIX="../install" can be given.
 
 Normal build:
 
@@ -45,11 +45,9 @@ Cross-compiling:
 
 The library for integration can be found in the *platforms/\<arch\>/prebuilt/lib/GCC* folder as a static library that can be compiled with the application in which it will be integrated in.
 
-For mode details refer to the [Binary README.md](platforms/x86_64/prebuilt/bin/README.md).
-
 Platform specific prebuilt binaries can be found in the *platforms/\<arch\>/prebuilt/bin* folder, where arch can be x86_64/aarch64. 
 
-For mode details refer to the [Platforms README.md](platforms/README.md).
+For mode details refer to the [Platforms README.md](platforms/README.md) and the [Binary README.md](platforms/x86_64/prebuilt/bin/README.md).
 
 ## Licensing
     
