@@ -49,6 +49,8 @@ Platform specific prebuilt binaries can be found in the *platforms/\<arch\>/preb
 
 For mode details refer to the [Platforms README.md](platforms/README.md) and the [Binary README.md](platforms/x86_64/prebuilt/bin/README.md).
 
+**Note** : The binaries in the prebuilt binaries/built example work with the TrillConnect application that has been shipped along with the Android SDK in the developers portal. It can also be found on the [Play strore](https://play.google.com/store/apps/details?id=com.trill.connect&hl=en&gl=US). The current demo can be tested using the Trill Command sub-category inside the TrillConnect application.
+
 ## Licensing
     
 Trillbit SDK will be functional only after the device on which the SDK will run on is licensed on the Trillbit server. For this, a one time API call with the UID of the device, on which the SDK will be integrated into, will be required.
