@@ -173,6 +173,20 @@ static void* trill_thread(void* arg)
     return NULL;
 }
 
+static int add_zeros(add_block_fn_t add_block_fn, int samples)
+{
+    int16_t* block_addr = NULL;
+    block_addr = malloc(SAMPLES_PER_BLOCK*sizeof(short));
+    memset(block_addr, 0, SAMPLES_PER_BLOCK*sizeof(short));
+
+    for(int i=0;i<samples;i+=SAMPLES_PER_BLOCK)
+    {
+        add_block_fn(block_addr);
+    }
+
+    return 0;
+}
+
 static int fetch_audio(add_block_fn_t add_block_fn)
 {
     int ret;
@@ -288,6 +302,9 @@ int main(int argc, char* argv[])
     trill_tx_params_t tx_params;
     trill_data_config_range_t tx_cfg_range = TRILL_DATA_CFG_RANGE_NEAR;
     int tx_payload_len;
+    float gap_between_play;
+    int gap_zeros=5000;
+    int repeat_count=1;
     int is_src_wavefile = 0;
     int n_channels = 1; // ideally query from source.
     const char* device_id;
@@ -296,11 +313,11 @@ int main(int argc, char* argv[])
     
     if (argc < 3)
     {
-        printf("Args: <payload_filepath> <output_wave_filepath.wav | alsa PCM device name> [data_cfg_range]\n");
+        printf("Args: <payload_filepath> <output_wave_filepath.wav | alsa PCM device name> [data_cfg_range] [repeat_count] [gap_in_seconds]\n");
         return -1;
     }
 
-    if (argc > 3)
+    if (argc == 4)
     {
         tx_cfg_range = atoi(argv[3]);
         if ((tx_cfg_range < TRILL_DATA_CFG_RANGE_NEAR) ||
@@ -309,6 +326,13 @@ int main(int argc, char* argv[])
             printf("Unknown config range: %d\n", tx_cfg_range);
             return -1;
         }
+    }
+    else if(argc > 4)
+    {
+        repeat_count = atoi(argv[4]);
+        gap_between_play = atof(argv[5]);
+        gap_zeros = SAMPLE_RATE*gap_between_play;
+        printf("Repeat count selected : %d, Gap between play : %f sec\n", repeat_count, gap_between_play);
     }
 
     ret = trill_get_device_id(&device_id);
@@ -376,22 +400,36 @@ int main(int argc, char* argv[])
     printf("payload length: %d\n", tx_payload_len);
     printf("\n");
 
+    for(int r=0;r<repeat_count;r++)
+    {
+        ret = trill_tx_data(trill_handle, &tx_params, 
+                tx_payload_buf, tx_payload_len);
+        if (ret < 0)
+        {
+            printf("trill_tx_data failed = %d\n", ret);
+            goto err;
+        }
+        
+        if (is_src_wavefile)
+        {
+            ret = fetch_audio(wave_add_block);
+        }
+        else
+        {
+            ret = fetch_audio(alsa_add_block);
+        }
 
-    ret = trill_tx_data(trill_handle, &tx_params, 
-	        tx_payload_buf, tx_payload_len);
-    if (ret < 0)
-    {
-        printf("trill_tx_data failed = %d\n", ret);
-        goto err;
-    }
-    
-    if (is_src_wavefile)
-    {
-        ret = fetch_audio(wave_add_block);
-    }
-    else
-    {
-        ret = fetch_audio(alsa_add_block);
+        if(repeat_count != 1)
+        {
+            if (is_src_wavefile)
+            {
+                ret = add_zeros(wave_add_block, gap_zeros);
+            }
+            else
+            {
+                ret = add_zeros(alsa_add_block, gap_zeros);
+            }
+        }
     }
 
 err:

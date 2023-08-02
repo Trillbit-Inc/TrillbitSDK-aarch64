@@ -10,7 +10,7 @@ target_link_directories(decoder PRIVATE ${CMAKE_HOME_DIRECTORY}/platforms/${PLAT
 
 if(${PLATFORM_OPTION} STREQUAL "aarch64")
     target_include_directories (decoder PUBLIC ${CMAKE_HOME_DIRECTORY}/platforms/${PLATFORM_OPTION}/external/sndfile/include)
-    target_include_directories (decoder PUBLIC ${CMAKE_HOME_DIRECTORY}/platforms/${PLATFORM_OPTION}/external/asla_lib/include)
+    target_include_directories (decoder PUBLIC ${CMAKE_HOME_DIRECTORY}/platforms/${PLATFORM_OPTION}/external/alsa_lib/include)
     target_link_directories(decoder PRIVATE ${CMAKE_HOME_DIRECTORY}/platforms/${PLATFORM_OPTION}/external/sndfile/lib)
     target_link_directories(decoder PRIVATE ${CMAKE_HOME_DIRECTORY}/platforms/${PLATFORM_OPTION}/external/alsa_lib/lib)
 endif()
