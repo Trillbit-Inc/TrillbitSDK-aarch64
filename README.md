@@ -16,7 +16,11 @@ For cross-compiling purposes gcc-aarch64-linux-gnu is required to be present in 
 
 To install all the dependencies for x86_64:
 
-    sudo apt-get install gcc-aarch64-linux-gnu libsndfile1-dev libasound2-dev
+    sudo apt-get install libsndfile1-dev libasound2-dev
+
+To install cross platform for aarch64:
+
+    sudo apt-get install gcc-aarch64-linux-gnu
 
 All dependencies required to cross-compile for aarch64 are provided in the platforms/aarch64/external folder.
 
