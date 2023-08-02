@@ -1,6 +1,6 @@
 # Trillbit SDK integrated with Linux GCC based platforms. 
 
-This repository demostrates the integration of Trillbit SDK with a general linux based system. There are two example codes provided : generator and decoder, and there are two modes of function in both of them : read from/write to a wav file or play/decode from a speaker/microphone. More details about the code can be understood by going through the implementation (mention the exact path)
+This repository demostrates the integration of Trillbit SDK with a general linux based system. There are two example codes provided : generator and decoder, and there are two modes of function in both of them : read from/write to a wav file or play/decode from a speaker/microphone. More details about the code can be understood by going through the implementation (main/decoder and main/generator).
 
 ## Platforms supported
 
