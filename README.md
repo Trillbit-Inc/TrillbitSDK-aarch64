@@ -1,6 +1,6 @@
 # Trillbit SDK integrated with Linux GCC based platforms. 
 
-This repository demostrates the integration of Trillbit SDK with a general linux based system. There are two example codes provided : generator and decoder, and there are two modes of function in both of them : read from/write to a wav file or play/decode from a speaker/microphone. More details about the code can be understood by going through the implementation (mention the exact path)
+This repository demostrates the integration of Trillbit SDK with a general linux based system. There are two example codes provided : generator and decoder, and there are two modes of function in both of them : read from/write to a wav file or play/decode from a speaker/microphone. More details about the code can be understood by going through the implementation (main/decoder and main/generator).
 
 ## Platforms supported
 
@@ -16,7 +16,11 @@ For cross-compiling purposes gcc-aarch64-linux-gnu is required to be present in 
 
 To install all the dependencies for x86_64:
 
-    sudo apt-get install gcc-aarch64-linux-gnu libsndfile1-dev libasound2-dev
+    sudo apt-get install libsndfile1-dev libasound2-dev
+
+To install cross platform for aarch64:
+
+    sudo apt-get install gcc-aarch64-linux-gnu
 
 All dependencies required to cross-compile for aarch64 are provided in the platforms/aarch64/external folder.
 
