@@ -11,5 +11,5 @@ This folder is for high pass filtering any file. This may be needed in cases whe
 To install dependencies run the following command:
 
 ```
-    sudo apt-get install python3 python3-pip python3-numpy python3-scipy
+    sudo apt-get install python3 python3-pip python3-numpy python3-scipy python3-soundfile
 ```
